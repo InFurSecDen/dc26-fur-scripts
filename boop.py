@@ -64,3 +64,15 @@ class deal_with_it_boop:
         if self.animation.animated_once:
             # Completed the animation. we're done here
             return True
+
+class beep:
+    # Change the `boop` function in `emote.py` in use `deal_with_it_boop`.
+    def __init__(self):
+        self.animation = _jsonanim("animations/beep.json")
+
+    def draw(self):
+        self.animation.draw()
+        self.interval = self.animation.interval
+        if self.animation.animated_once:
+            # Completed the animation. we're done here
+            return True

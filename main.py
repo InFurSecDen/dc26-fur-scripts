@@ -62,13 +62,16 @@ def blerx(args):
                 emote.render(emstr)
                 pyb.delay(2500)
         if name == "awoo":
-            ## Someone started a howl
-            msg = animations.scroll(" AWOOOOOOOOOOOOOO")
+            from boop import beep
             delay = 0
+            ## Someone started a howl
+            msg = beep()
             while delay < 5000:
-                msg.draw()
+                draw_result = msg.draw()
                 pyb.delay(msg.interval)
                 delay += msg.interval
+                if draw_result:
+                    break # The animation indicated it was over.
 
 
 def ble():
@@ -146,6 +149,7 @@ class Main:
         if badge.ble.any():
             ble()
         if badge.boop.event():
+            badge.ble.write('tx: awoo\r\n')
             override = None
             if hasattr(self.anim, "boop") and callable(getattr(self.anim, "boop")):
                 override = self.anim.boop()

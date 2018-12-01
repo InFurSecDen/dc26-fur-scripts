@@ -89,11 +89,11 @@ def owo():
 
 
 def boop():
-    from boop import boop, inverting_boop, deal_with_it_boop
+    from boop import boop, beep, inverting_boop, deal_with_it_boop
 
     # return inverting_boop()
     # return deal_with_it_boop()
-    return boop()
+    return beep()
 
 
 def beep():
